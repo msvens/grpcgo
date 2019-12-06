@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.mellowtech.grpcgo.service";
+option java_outer_classname = "ServiceProto";
+
+package service;
+
+service UserService {
+    rpc AddUser (AddUserRequest) returns (AddUserResponse) {}
+    rpc DeleteAll (DeleteAllRequest) returns (DeleteAllResponse) {}
+    rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse) {}
+    rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+    rpc ListUser (ListUserRequest) returns (ListUserResponse) {}
+}
+
+message AddUserRequest {
+    string name = 1;
+    string email = 2;
+}
+
+message AddUserResponse {
+    int64 id = 1;
+}
+
+message DeleteAllRequest {
+
+}
+
+message DeleteAllResponse {
+    int32 count = 1;
+}
+
+message DeleteUserRequest {
+    int64 id = 1;
+}
+
+message DeleteUserResponse {
+    int32 count = 1;
+}
+
+message GetUserRequest {
+    int64 id = 1;
+}
+
+message GetUserResponse {
+    UserResponse user = 1;
+}
+
+message ListUserRequest {
+
+}
+
+message ListUserResponse {
+    repeated UserResponse users = 1;
+}
+
+message UserResponse {
+    int64 id = 1;
+    string name = 2;
+    string email = 3;
+}
